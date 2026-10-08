@@ -403,12 +403,7 @@
       if (!last) last = now;
       if (!t0) t0 = now;
       var dt = Math.min((now - last) / 1000, 0.05); last = now;
-      if (!canHover) {
-        var tt = (now - t0) / 1000;   // touch screens: an invisible attractor wanders
-        pointer.x = w * (0.5 + 0.36 * Math.sin(tt * 0.17));
-        pointer.y = h * (0.55 + 0.3 * Math.sin(tt * 0.23 + 1.3));
-        pointer.active = true;
-      }
+      // Touch screens have no pointer to follow, so the discs only drift: no lean, no bridges.
       intensity += ((pointer.active ? 1 : 0) - intensity) * Math.min(1, (dt * 1000) / FADE_MS);
       look.x += (lookT.x - look.x) * Math.min(1, dt * 2.5);
       look.y += (lookT.y - look.y) * Math.min(1, dt * 2.5);
@@ -460,10 +455,30 @@
         m.appendChild(copy);
       }
       m.classList.add('is-running');
-      // a steady reading speed whatever the row's length
-      var secs = track.getBoundingClientRect().width / MARQUEE_SPEED;
-      m.querySelectorAll('.marquee__track').forEach(function (t) { t.style.animationDuration = secs.toFixed(1) + 's'; });
     });
+    // A steady reading speed whatever the row's length. The width is measured again once the
+    // web fonts are in (the fallback font is narrower, which made the first run far too fast on
+    // a cold load) and whenever the row changes size.
+    var setMarqueeSpeed = function (m) {
+      var track = m.querySelector('.marquee__track');
+      var width = track ? track.getBoundingClientRect().width : 0;
+      if (!width) return;
+      var secs = (width / MARQUEE_SPEED).toFixed(1) + 's';
+      m.querySelectorAll('.marquee__track').forEach(function (t) {
+        if (t.style.animationDuration !== secs) t.style.animationDuration = secs;
+      });
+    };
+    var marquees = document.querySelectorAll('.marquee.is-running');
+    var setAllMarquees = function () { marquees.forEach(setMarqueeSpeed); };
+    setAllMarquees();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(setAllMarquees);
+    window.addEventListener('load', setAllMarquees);
+    if ('ResizeObserver' in window) {
+      var marqueeRO = new ResizeObserver(function (entries) {
+        entries.forEach(function (e) { setMarqueeSpeed(e.target.closest('.marquee')); });
+      });
+      marquees.forEach(function (m) { marqueeRO.observe(m.querySelector('.marquee__track')); });
+    }
   }
 
   /* ---------- 6. booking calendar in the footer ---------- */

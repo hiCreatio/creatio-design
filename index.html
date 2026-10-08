@@ -1,433 +1,494 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hoàng Trần · Senior Product Designer · Creatio Design</title>
-<meta name="description" content="Twelve years designing digital products end to end. Senior product design capacity for product teams and studios in Singapore and Australia, without adding headcount.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23111110'/><text x='16' y='22' font-family='Inter,sans-serif' font-size='16' font-weight='700' fill='%23F5F1E8' text-anchor='middle'>C</text></svg>">
-<style>
-  @font-face { font-family:'Inter'; src:url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); font-weight:400; font-display:swap; }
-  @font-face { font-family:'Inter'; src:url('assets/fonts/inter-latin-500-normal.woff2') format('woff2'); font-weight:500; font-display:swap; }
-  @font-face { font-family:'Inter'; src:url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); font-weight:600; font-display:swap; }
-  @font-face { font-family:'Inter'; src:url('assets/fonts/inter-latin-700-normal.woff2') format('woff2'); font-weight:700; font-display:swap; }
-
-  :root {
-    --bg: #F7F4ED;
-    --surface: #FFFFFF;
-    --ink: #191817;
-    --ink-2: #504C46;
-    --ink-3: #8A857C;
-    --line: #E4DFD4;
-    --accent: #B8551A;
-    --accent-ink: #8F3E0D;
-    --radius: 14px;
-    --w: 1080px;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creatio Design · Product design studio bridging idea &amp; development</title>
+  <meta name="description" content="Product design capacity in packages (Design Audit, Scope-based, Retainer): product direction, UX research, in-depth UI/UX design, verification and dev-ready hand-off.">
+  <link rel="canonical" href="https://creatio.design/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Creatio Design">
+  <meta property="og:title" content="Creatio Design · Product design studio bridging idea &amp; development">
+  <meta property="og:description" content="Product design capacity in packages (Design Audit, Scope-based, Retainer): product direction, UX research, in-depth UI/UX design, verification and dev-ready hand-off.">
+  <meta property="og:url" content="https://creatio.design/">
+  <meta property="og:image" content="https://creatio.design/assets/img/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="design-system/fonts/work-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="design-system/fonts/oswald-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="design-system/fonts.css">
+  <link rel="stylesheet" href="design-system/tokens.css">
+  <link rel="stylesheet" href="design-system/typography.css">
+  <link rel="stylesheet" href="design-system/components.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Creatio Design",
+    "legalName": "Creatio Design Company Limited",
+    "url": "https://creatio.design/",
+    "logo": "https://creatio.design/favicon.svg",
+    "email": "hi@creatio.design",
+    "telephone": "+84396245300",
+    "foundingDate": "2024-12",
+    "taxID": "0318770321",
+    "founder": {
+      "@type": "Person",
+      "name": "Hoang Tran",
+      "jobTitle": "CEO",
+      "sameAs": "https://www.linkedin.com/in/hoangtran-designer"
+    }
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body {
-    font-family:'Inter', system-ui, -apple-system, sans-serif;
-    background:var(--bg); color:var(--ink);
-    font-size:17px; line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-    font-feature-settings:'ss01' 1;
-  }
-  .wrap { max-width:var(--w); margin:0 auto; padding:0 28px; }
-  .tnum { font-variant-numeric:tabular-nums; }
-
-  /* ---------- header ---------- */
-  header {
-    position:sticky; top:0; z-index:10;
-    background:color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav { display:flex; align-items:center; justify-content:space-between; height:64px; }
-  .brand { display:flex; align-items:center; gap:10px; font-weight:600; font-size:15px; letter-spacing:-0.01em; color:var(--ink); text-decoration:none; }
-  .brand-mark { width:26px; height:26px; border-radius:7px; background:var(--ink); color:#F5F1E8; display:grid; place-items:center; font-size:13px; font-weight:700; }
-  .nav-links { display:flex; gap:26px; align-items:center; }
-  .nav-links a { font-size:14.5px; font-weight:500; color:var(--ink-2); text-decoration:none; }
-  .nav-links a:hover { color:var(--ink); }
-  .btn {
-    display:inline-block; background:var(--ink); color:#F5F1E8;
-    font-size:14.5px; font-weight:600; text-decoration:none;
-    padding:9px 18px; border-radius:99px; letter-spacing:-0.01em;
-  }
-  .btn:hover { background:#000; }
-  .btn-lg { padding:13px 26px; font-size:16px; }
-  .btn-ghost { background:transparent; color:var(--ink); border:1.5px solid var(--line); }
-  .btn-ghost:hover { background:var(--surface); border-color:var(--ink-3); }
-
-  /* ---------- hero ---------- */
-  .hero { padding:88px 0 72px; }
-  .kicker {
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:13.5px; font-weight:600; color:var(--accent-ink);
-    background:color-mix(in srgb, var(--accent) 9%, transparent);
-    border:1px solid color-mix(in srgb, var(--accent) 22%, transparent);
-    padding:6px 14px; border-radius:99px; margin-bottom:26px;
-  }
-  .kicker .dot { width:7px; height:7px; border-radius:99px; background:var(--accent); }
-  h1 {
-    font-size:clamp(36px, 5.4vw, 58px); line-height:1.06;
-    letter-spacing:-0.035em; font-weight:700; max-width:820px;
-  }
-  h1 em { font-style:normal; color:var(--ink-3); }
-  .lede { margin-top:26px; max-width:660px; font-size:19px; color:var(--ink-2); }
-  .lede strong { color:var(--ink); font-weight:600; }
-  .hero-cta { margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
-  .hero-note { font-size:14px; color:var(--ink-3); margin-top:14px; }
-
-  .facts {
-    margin-top:60px; display:grid;
-    grid-template-columns:repeat(4, 1fr); gap:1px;
-    background:var(--line); border:1px solid var(--line);
-    border-radius:var(--radius); overflow:hidden;
-  }
-  .fact { background:var(--surface); padding:20px 22px; }
-  .fact b { display:block; font-size:22px; font-weight:700; letter-spacing:-0.02em; }
-  .fact span { font-size:13.5px; color:var(--ink-3); }
-
-  /* ---------- sections ---------- */
-  section { padding:72px 0; }
-  .sec-head { margin-bottom:40px; max-width:640px; }
-  .sec-label { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.09em; color:var(--accent-ink); margin-bottom:12px; }
-  h2 { font-size:clamp(26px, 3.4vw, 36px); letter-spacing:-0.025em; line-height:1.15; font-weight:700; }
-  .sec-head p { margin-top:14px; color:var(--ink-2); }
-
-  /* ---------- services ---------- */
-  .cards2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  .card {
-    background:var(--surface); border:1px solid var(--line);
-    border-radius:var(--radius); padding:30px;
-  }
-  .card h3 { font-size:20px; letter-spacing:-0.02em; margin-bottom:10px; }
-  .card p { font-size:15.5px; color:var(--ink-2); }
-  .card ul { list-style:none; margin-top:16px; }
-  .card li { font-size:15px; color:var(--ink-2); padding:7px 0 7px 24px; position:relative; border-top:1px dashed var(--line); }
-  .card li::before { content:''; position:absolute; left:2px; top:14px; width:10px; height:10px; border-radius:3px; background:color-mix(in srgb, var(--accent) 80%, transparent); }
-  .card .who { font-size:13px; font-weight:600; color:var(--ink-3); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:8px; }
-
-  /* ---------- work ---------- */
-  .work-list { display:flex; flex-direction:column; gap:22px; }
-  .work {
-    background:var(--surface); border:1px solid var(--line);
-    border-radius:var(--radius); overflow:hidden;
-    display:grid; grid-template-columns:1.05fr 0.95fr;
-  }
-  .work-cover { grid-column:1/-1; display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
-  .work-cover img { width:100%; height:190px; object-fit:cover; display:block; background:#0E1F14; }
-  .work-body { padding:34px; display:flex; flex-direction:column; }
-  .work-tag { font-size:12.5px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:12px; }
-  .work-tag .verified { color:#1D7A3E; }
-  .work h3 { font-size:22px; letter-spacing:-0.02em; line-height:1.25; margin-bottom:12px; }
-  .work p { font-size:15.5px; color:var(--ink-2); }
-  .work-link { margin-top:auto; padding-top:18px; font-size:14.5px; font-weight:600; color:var(--accent-ink); text-decoration:none; }
-  .work-link:hover { text-decoration:underline; }
-  .work-metrics {
-    background:#FBFAF6; border-left:1px solid var(--line);
-    padding:28px 30px; display:flex; flex-direction:column; justify-content:center; gap:16px;
-  }
-  .metric { display:flex; align-items:baseline; justify-content:space-between; gap:14px; border-bottom:1px dashed var(--line); padding-bottom:12px; }
-  .metric:last-child { border-bottom:none; padding-bottom:0; }
-  .metric b { font-size:19px; font-weight:700; letter-spacing:-0.02em; white-space:nowrap; }
-  .metric span { font-size:13.5px; color:var(--ink-3); text-align:right; }
-  .method-note { font-size:12.5px; color:var(--ink-3); margin-top:4px; }
-
-  /* ---------- AI ---------- */
-  .ai-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
-  .ai-card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
-  .ai-card .n { font-size:13px; font-weight:700; color:var(--accent-ink); margin-bottom:10px; }
-  .ai-card h3 { font-size:17px; letter-spacing:-0.015em; margin-bottom:8px; }
-  .ai-card p { font-size:14.5px; color:var(--ink-2); }
-  .ai-note {
-    margin-top:22px; background:color-mix(in srgb, var(--accent) 6%, var(--surface));
-    border:1px solid color-mix(in srgb, var(--accent) 20%, transparent);
-    border-radius:var(--radius); padding:22px 26px; font-size:15px; color:var(--ink-2);
-  }
-  .ai-note b { color:var(--ink); }
-
-  /* ---------- about / contact ---------- */
-  .about { display:grid; grid-template-columns:1.2fr 0.8fr; gap:48px; align-items:start; }
-  .about p { color:var(--ink-2); margin-bottom:14px; }
-  .about p strong { color:var(--ink); }
-  .side-card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
-  .side-card h4 { font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-3); margin-bottom:14px; }
-  .side-row { display:flex; justify-content:space-between; gap:12px; font-size:14.5px; padding:8px 0; border-bottom:1px dashed var(--line); }
-  .side-row:last-child { border-bottom:none; }
-  .side-row span { color:var(--ink-3); }
-  .side-row b { font-weight:600; text-align:right; }
-
-  .contact {
-    background:var(--ink); color:#F5F1E8; border-radius:20px;
-    padding:64px 48px; text-align:center; margin-bottom:80px;
-  }
-  .contact h2 { color:#F5F1E8; }
-  .contact p { max-width:560px; margin:16px auto 0; color:#C9C3B7; font-size:16.5px; }
-  .contact .btn { background:#F5F1E8; color:var(--ink); margin-top:30px; }
-  .contact .btn:hover { background:#fff; }
-  .contact .mail { display:block; margin-top:16px; font-size:14.5px; color:#A39D91; text-decoration:none; }
-
-  footer { border-top:1px solid var(--line); padding:28px 0 44px; }
-  .foot { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; font-size:13.5px; color:var(--ink-3); }
-  .foot a { color:var(--ink-2); text-decoration:none; }
-
-  @media (max-width: 880px) {
-    .facts { grid-template-columns:1fr 1fr; }
-    .cards2, .ai-grid { grid-template-columns:1fr; }
-    .work { grid-template-columns:1fr; }
-    .work-metrics { border-left:none; border-top:1px solid var(--line); }
-    .about { grid-template-columns:1fr; }
-    .nav-links a:not(.btn) { display:none; }
-  }
-</style>
+  </script>
+  <script src="assets/js/site.js" defer></script>
 </head>
 <body>
+  <svg class="visually-hidden" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="mark-small" viewBox="0 0 40 40">
+      <path fill="currentColor" d="M20 0C26.2619 0 31.851 2.87816 35.518 7.3835C37.0444 9.25895 36.137 11.9312 33.9741 13.0125C31.8138 14.0926 29.2222 13.1218 27.4047 11.531C25.4263 9.79944 22.8359 8.75 20 8.75C18.8401 8.75 17.7212 8.92571 16.6684 9.25178C16.0616 9.43972 15.3908 9.11894 15.2265 8.50534L15.119 8.10375C15.0297 7.77032 14.687 7.57243 14.3536 7.66177C14.0202 7.75109 13.8224 8.0937 13.9116 8.42706L14.1162 9.19086C14.2821 9.81051 14.0049 10.4569 13.4825 10.8292C13.4457 10.8554 13.4091 10.8818 13.3727 10.9084C12.671 11.4213 11.6829 11.4241 11.0683 10.8095L9.45069 9.19189C9.20664 8.94784 8.81095 8.94784 8.5669 9.19189C8.32285 9.43595 8.32285 9.83163 8.5669 10.0757L10.3292 11.838C10.8945 12.4033 10.92 13.3089 10.4919 13.9839C10.1024 14.5981 9.36662 14.9556 8.66407 14.7675L7.80208 14.5366C7.46871 14.4474 7.12609 14.6452 7.03677 14.9786C6.94743 15.312 7.14531 15.6547 7.47873 15.744L8.08304 15.9058C8.78703 16.0944 9.17464 16.8424 9.01683 17.5539C8.84216 18.3414 8.75 19.1599 8.75 20C8.75 26.2132 13.7868 31.25 20 31.25C22.836 31.25 25.4264 30.2004 27.4048 28.4686C29.2222 26.8778 31.8139 25.9069 33.9742 26.987C36.137 28.0683 37.0445 30.7404 35.5182 32.6158C31.8513 37.1215 26.2622 40 20 40C8.95431 40 0 31.0457 0 20C0 8.9543 8.95431 0 20 0Z"/>
+      <path fill="currentColor" d="M33.5 14.75C34.0523 14.75 34.5 15.1977 34.5 15.75V24.25C34.5 24.8023 34.0523 25.25 33.5 25.25C32.9477 25.25 32.5 24.8023 32.5 24.25V15.75C32.5 15.1977 32.9477 14.75 33.5 14.75Z"/>
+      <path fill="currentColor" d="M36.5 15.5C37.0523 15.5 37.5 15.9477 37.5 16.5V23.5C37.5 24.0523 37.0523 24.5 36.5 24.5C35.9477 24.5 35.5 24.0523 35.5 23.5V16.5C35.5 15.9477 35.9477 15.5 36.5 15.5Z"/>
+    </symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"><path d="M3 12h16M14 6l6 6-6 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 17L17 7M8 7h9v9"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter"><path d="M4 12l5 5L20 6"/></symbol>
+  </svg>
 
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#top"><span class="brand-mark">C</span> Creatio Design</a>
-    <nav class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#ai">AI workflow</a>
-      <a href="#about">About</a>
-      <a class="btn" href="mailto:hi@creatio.design">Let's talk</a>
-    </nav>
-  </div>
-</header>
+  <a class="skip-link cds-btn cds-btn--default cds-btn--default-v" href="#main">Skip to content</a>
 
-<main id="top">
-
-  <!-- ============ HERO ============ -->
-  <div class="wrap hero">
-    <div class="kicker"><span class="dot"></span> Available for one engagement · UTC+7, full-day overlap with SG &amp; AU</div>
-    <h1>Senior product design capacity, <em>without adding headcount.</em></h1>
-    <p class="lede">
-      Twelve years designing digital products end to end: research, UI, prototypes,
-      design systems, including five leading a team of six. I work with product teams
-      and design studios that need senior capacity now: <strong>overflow after a new win,
-      a launch with a fixed date, or a product that has grown faster than the design
-      holding it together.</strong>
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-lg" href="mailto:hi@creatio.design">Start a conversation</a>
-      <a class="btn btn-lg btn-ghost" href="#work">See the work</a>
-    </div>
-    <p class="hero-note">Easiest start is a paid two-week scope. If the fit is wrong, we stop there.</p>
-
-    <div class="facts">
-      <div class="fact"><b class="tnum">12 yrs</b><span>End-to-end product design</span></div>
-      <div class="fact"><b class="tnum">6</b><span>Designers led as manager</span></div>
-      <div class="fact"><b>Figma → code</b><span>Working prototypes, not mockups</span></div>
-      <div class="fact"><b>UTC+7</b><span>Same-day with Sydney &amp; Singapore</span></div>
-    </div>
-  </div>
-
-  <!-- ============ SERVICES ============ -->
-  <section id="services">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-label">Services</div>
-        <h2>Two ways to work with me</h2>
-        <p>Both start small on purpose. Senior work should prove itself before it asks for commitment.</p>
+  <header class="site-header">
+    <div class="cds-container site-header__bar">
+      <a class="site-brand" href="./" aria-label="Creatio Design, home">
+        <svg class="site-brand__mark" width="24" height="24" aria-hidden="true" focusable="false"><use href="#mark-small"/></svg>
+        <span class="site-brand__word" aria-hidden="true">Creatio Design</span>
+      </a>
+      <div class="site-header__actions">
+        <nav class="site-nav" aria-label="Primary">
+          <span class="site-nav__blob" aria-hidden="true"></span>
+          <a class="cds-navitem" href="#about">About</a>
+          <a class="cds-navitem" href="#process">Process</a>
+          <a class="cds-navitem" href="#work">Work</a>
+          <a class="cds-navitem" href="#packages">Packages</a>
+        </nav>
+        <a class="cds-btn cds-btn--sm cds-btn--secondary-v site-header__cta" href="https://cal.com/creatio-design/discovery">Book a discovery call</a>
+        <details class="cds-menu site-menu">
+          <summary class="cds-iconbtn cds-iconbtn--md cds-iconbtn--ghost" aria-label="Menu">
+            <span class="cds-iconbtn__glyph site-menu__open"><svg class="icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg></span>
+            <span class="cds-iconbtn__glyph site-menu__close"><svg class="icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="#i-close"/></svg></span>
+          </summary>
+          <nav class="cds-menu__panel cds-menu__panel--right site-menu__panel" aria-label="Primary">
+            <a class="cds-menu__item" href="#about">About</a>
+            <a class="cds-menu__item" href="#process">Process</a>
+            <a class="cds-menu__item" href="#work">Work</a>
+            <a class="cds-menu__item" href="#packages">Packages</a>
+            <div class="cds-menu__divider" role="presentation"></div>
+            <a class="cds-btn cds-btn--lg cds-btn--default-v site-menu__cta" href="https://cal.com/creatio-design/discovery">Book a discovery call</a>
+          </nav>
+        </details>
       </div>
-      <div class="cards2">
-        <div class="card">
-          <div class="who">For product teams</div>
-          <h3>Two-week product diagnostic</h3>
-          <p>A fixed, paid scope. I go deep on one product area, bring back what the
-             evidence shows, and leave the team with decisions they can act on.</p>
-          <ul>
-            <li>Findings grounded in your product's actual flows and data, each one traceable to a source</li>
-            <li>A prioritized set of fixes, with the trade-offs stated plainly</li>
-            <li>A working prototype of the highest-impact change, in code, clickable</li>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero (archetype H): white band, full viewport, three-depth amber field drawn by site.js -->
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas class="hero__field" aria-hidden="true"></canvas>
+      <div class="cds-container hero__inner">
+        <h1 id="hero-title" class="cds-h cds-h--oswald-m hero__title">
+          <span class="hero__title-line">Product design studio</span>
+          <span class="hero__title-line">bridging idea &amp; development</span>
+        </h1>
+        <p class="cds-txt cds-txt--body-l hero__lead">Product design capacity, delivered in packages: <span class="hero__packages">Design Audit&nbsp;· Scope-based&nbsp;· Retainer.</span></p>
+        <div class="hero__actions">
+          <a class="cds-btn cds-btn--lg cds-btn--secondary-v" data-theme="dark" href="https://cal.com/creatio-design/discovery">Book a discovery call</a>
+        </div>
+      </div>
+      <a class="hero__scroll" href="#work">
+        <span class="cds-txt cds-txt--overline">See our work</span>
+        <svg class="icon hero__scroll-icon" width="20" height="20" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+      </a>
+    </section>
+
+    <!-- About (archetype S): cut-out portrait on the section's bottom edge -->
+    <section id="about" class="cds-section section about" aria-labelledby="about-title">
+      <div class="cds-container">
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <header class="section-head">
+              <h2 id="about-title" class="cds-h cds-h--h1">We are Creatio Design</h2>
+              <p class="cds-txt cds-txt--body-l cds-txt--secondary">Our main value lies in product analysis and product decisions, not only in the interface layer.</p>
+            </header>
+            <div>
+              <h3 class="cds-txt cds-txt--overline cds-txt--secondary about__label">What we do</h3>
+              <ol class="num-list" role="list">
+                <li class="num-list__item"><span class="num-list__num" aria-hidden="true">01</span><span class="cds-h cds-h--h3">Product direction &amp; UX research</span></li>
+                <li class="num-list__item"><span class="num-list__num" aria-hidden="true">02</span><span class="cds-h cds-h--h3">In-depth UI/UX design</span></li>
+                <li class="num-list__item"><span class="num-list__num" aria-hidden="true">03</span><span class="cds-h cds-h--h3">Verification &amp; hand-off</span></li>
+              </ol>
+            </div>
+            <div class="about__founder">
+              <p class="cds-h cds-h--h3">Hoang Tran</p>
+              <p class="cds-txt cds-txt--body-s cds-txt--secondary">CEO, Creatio Design</p>
+              <p class="cds-txt cds-txt--body about__bio">Leads every project directly. 12+ years building products, specialized in product design.</p>
+            </div>
+          </div>
+          <figure class="about__figure">
+            <img class="about__portrait" src="assets/img/founder-hoang.webp" width="840" height="1614" alt="Hoang Tran, CEO of Creatio Design, holding a laptop" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two common gaps (archetype S) -->
+    <section id="gaps" class="cds-section cds-section--raised section" aria-labelledby="gaps-title">
+      <div class="cds-container">
+        <header class="section-head reveal">
+          <h2 id="gaps-title" class="cds-h cds-h--h1">Two common gaps in projects</h2>
+        </header>
+        <div class="section-body">
+          <div class="cds-grid gap-cards">
+            <article class="cds-grid__item cds-card card-roomy gap-card reveal">
+              <div class="gap-card__head">
+                <span class="cds-badge cds-badge--default">Gap 01</span>
+                <span class="cds-txt cds-txt--caption cds-txt--secondary">Ideation → product decision</span>
+              </div>
+              <h3 class="cds-h cds-h--h2">Building the wrong thing</h3>
+              <p class="cds-card__desc">The initial idea has not been translated into a product flow. Business, design and dev each read it differently, and the team builds in the wrong direction before there is a chance to verify it.</p>
+            </article>
+            <article class="cds-grid__item cds-card card-roomy gap-card reveal">
+              <div class="gap-card__head">
+                <span class="cds-badge cds-badge--default">Gap 02</span>
+                <span class="cds-txt cds-txt--caption cds-txt--secondary">Product decision → ready for devs</span>
+              </div>
+              <h3 class="cds-h cds-h--h2">Fragmented hand-off</h3>
+              <p class="cds-card__desc">Requirements reach dev in pieces, over chat and screenshots, with no single source of truth. Edge cases surface during coding and lead to rework; the later they are found, the more each fix costs.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our solution (archetype S) -->
+    <section id="solution" class="cds-section section" aria-labelledby="solution-title">
+      <div class="cds-container">
+        <header class="section-head reveal">
+          <h2 id="solution-title" class="cds-h cds-h--h1">Our solution</h2>
+          <p class="cds-txt cds-txt--body-l cds-txt--secondary">Getting business, design and dev to execute in one direction.</p>
+        </header>
+        <div class="section-body cds-grid">
+          <article class="cds-grid__item cds-card card-roomy solution-card reveal">
+            <span class="solution-card__icon" aria-hidden="true"><svg class="icon" width="24" height="24" focusable="false"><use href="#i-arrow-up-right"/></svg></span>
+            <h3 class="cds-h cds-h--h3">Business-oriented</h3>
+            <p class="cds-card__desc">Design decisions tied to the project’s business goals.</p>
+          </article>
+          <article class="cds-grid__item cds-card card-roomy solution-card reveal">
+            <span class="solution-card__icon" aria-hidden="true"><svg class="icon" width="24" height="24" focusable="false"><use href="#i-search"/></svg></span>
+            <h3 class="cds-h cds-h--h3">Data-driven</h3>
+            <p class="cds-card__desc">Grounded in data, so judgments have a basis.</p>
+          </article>
+          <article class="cds-grid__item cds-card card-roomy solution-card reveal">
+            <span class="solution-card__icon" aria-hidden="true"><svg class="icon" width="24" height="24" focusable="false"><use href="#i-check"/></svg></span>
+            <h3 class="cds-h cds-h--h3">Fluency</h3>
+            <p class="cds-card__desc">We speak business, product and dev, which reduces misalignment and rework between teams.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process (archetype L): dark band -->
+    <section id="process" class="cds-section section band-dark" data-theme="dark" aria-labelledby="process-title">
+      <div class="cds-container">
+        <header class="section-head reveal">
+          <h2 id="process-title" class="cds-h cds-h--h1">Process: from discovery to hand-off</h2>
+          <p class="cds-txt cds-txt--body-l cds-txt--secondary">Depending on the project, the process and the artifacts it produces can be lean or complete.</p>
+        </header>
+        <ol class="section-body timeline" role="list">
+          <li class="timeline__step reveal">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__head"><h3 class="cds-h cds-h--h3">Discovery</h3></div>
+            <p class="cds-txt cds-txt--body">Pin down the business problem and the critical parts before going into detail.</p>
+            <p class="timeline__output"><span class="cds-txt cds-txt--overline cds-txt--secondary">Output</span><span class="cds-txt cds-txt--body-s">Problem framing + research questions</span></p>
+          </li>
+          <li class="timeline__step reveal">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__head"><h3 class="cds-h cds-h--h3">Research</h3></div>
+            <p class="cds-txt cds-txt--body">Verify with company data and real users, not assumptions.</p>
+            <p class="timeline__output"><span class="cds-txt cds-txt--overline cds-txt--secondary">Output</span><span class="cds-txt cds-txt--body-s">Data synthesis + insights</span></p>
+          </li>
+          <li class="timeline__step reveal">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__head"><h3 class="cds-h cds-h--h3">User / task flow</h3></div>
+            <p class="cds-txt cds-txt--body">Map user and system flows to surface bottlenecks early.</p>
+            <p class="timeline__output"><span class="cds-txt cds-txt--overline cds-txt--secondary">Output</span><span class="cds-txt cds-txt--body-s">User flow + task flow diagrams</span></p>
+          </li>
+          <li class="timeline__step reveal">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__head"><h3 class="cds-h cds-h--h3">IA</h3></div>
+            <p class="cds-txt cds-txt--body">Structure information the way users look for it.</p>
+            <p class="timeline__output"><span class="cds-txt cds-txt--overline cds-txt--secondary">Output</span><span class="cds-txt cds-txt--body-s">IA diagram / sitemap</span></p>
+          </li>
+          <li class="timeline__step reveal">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__head"><h3 class="cds-h cds-h--h3">Wireframe</h3></div>
+            <p class="cds-txt cds-txt--body">Lock the structure and content of every screen.</p>
+            <p class="timeline__output"><span class="cds-txt cds-txt--overline cds-txt--secondary">Output</span><span class="cds-txt cds-txt--body-s">Wireframes for every screen</span></p>
+          </li>
+          <li class="timeline__step reveal">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__head"><h3 class="cds-h cds-h--h3">Hi-fi</h3></div>
+            <p class="cds-txt cds-txt--body">Detailed UI, every state, on brand.</p>
+            <p class="timeline__output"><span class="cds-txt cds-txt--overline cds-txt--secondary">Output</span><span class="cds-txt cds-txt--body-s">Hi-fi UI with all states, interactive prototype</span></p>
+          </li>
+          <li class="timeline__step reveal">
+            <span class="timeline__dot" aria-hidden="true"></span>
+            <div class="timeline__head"><h3 class="cds-h cds-h--h3">Design spec</h3></div>
+            <p class="cds-txt cds-txt--body">A spec engineers can measure: dimensions, behavior, edge cases.</p>
+            <p class="timeline__output"><span class="cds-txt cds-txt--overline cds-txt--secondary">Output</span><span class="cds-txt cds-txt--body-s">Dev-ready design spec for engineers</span></p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Capabilities (archetype S): two big uppercase marquees running in opposite directions -->
+    <section id="capabilities" class="cds-section cds-section--raised section caps" aria-labelledby="caps-title">
+      <h2 id="caps-title" class="visually-hidden">Project delivery capabilities</h2>
+      <div class="caps__rows reveal">
+        <div class="marquee marquee--right">
+          <ul class="marquee__track" role="list" aria-label="Across the product lifecycle">
+              <li class="marquee__item">Product strategy<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">UX research<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">UI &amp; interaction design<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Design system<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Prototyping<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Development hand-off<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Cross-team collaboration<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Product &amp; design consulting<span class="marquee__sep" aria-hidden="true"></span></li>
           </ul>
         </div>
-        <div class="card">
-          <div class="who">For design studios</div>
-          <h3>Senior overflow capacity</h3>
-          <p>White-label senior design for the months when the pipeline outruns the team.
-             No onboarding overhead, no headcount conversation.</p>
-          <ul>
-            <li>Monthly capacity, reserved. Scale down when the crunch passes</li>
-            <li>Comfortable in client-facing rooms: I argue design decisions in business terms</li>
-            <li>Contractor structure through a registered Vietnamese company. Invoice and contract, no employer setup needed</li>
+        <div class="marquee marquee--left">
+          <ul class="marquee__track" role="list" aria-label="Standards and methods">
+              <li class="marquee__item">UX principles<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Usability heuristics<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Accessibility (WCAG)<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">HCI<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Responsive design<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Agile<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">User interview<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">A/B test<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">AI-assisted workflow<span class="marquee__sep" aria-hidden="true"></span></li>
+              <li class="marquee__item">Design quality metrics<span class="marquee__sep" aria-hidden="true"></span></li>
           </ul>
         </div>
       </div>
+    </section>
+
+    <!-- Selected work (WorkCard archetype, large rows) -->
+    <section id="work" class="cds-section section" aria-labelledby="work-title">
+      <div class="cds-container">
+        <header class="section-head reveal">
+          <h2 id="work-title" class="cds-h cds-h--h1">Selected work</h2>
+        </header>
+        <ul class="section-body work-rows" role="list">
+          <li class="reveal">
+            <a class="work-row" href="work/blocktree.html">
+              <div class="cds-aspect cds-aspect--rounded work-row__media">
+                <img src="assets/img/blocktree-app.webp" width="1008" height="728" alt="BlockTree field-worker app screens" loading="lazy">
+              </div>
+              <div class="work-row__body">
+                <h3 class="cds-h cds-h--h2">BlockTree</h3>
+                <p class="cds-txt cds-txt--body cds-txt--secondary">Brand, sponsor website and field-worker app for blockchain-verified reforestation. 5/5 milestones met, USD 37,800 disbursed.</p>
+                <span class="work-row__more">Read the case <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+              </div>
+            </a>
+          </li>
+          <li class="reveal">
+            <a class="work-row" href="work/design-system.html">
+              <div class="cds-aspect cds-aspect--rounded work-row__media">
+                <img src="assets/img/ds-foundations.webp" width="1008" height="728" alt="Design system foundations: colour palettes, typography and component states" loading="lazy">
+              </div>
+              <div class="work-row__body">
+                <span class="cds-badge cds-badge--outline">Anonymized</span>
+                <h3 class="cds-h cds-h--h2">Reusable and scalable design system</h3>
+                <p class="cds-txt cds-txt--body cds-txt--secondary">One shared design system for a multi-product enterprise B2B SaaS platform.</p>
+                <span class="work-row__more">Read the case <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+              </div>
+            </a>
+          </li>
+          <li class="reveal">
+            <a class="work-row" href="work/itops.html">
+              <div class="cds-aspect cds-aspect--rounded work-row__media">
+                <img src="assets/img/itops-overview.webp" width="852" height="643" alt="ITOps workflow automation overview screen" loading="lazy">
+              </div>
+              <div class="work-row__body">
+                <h3 class="cds-h cds-h--h2">ITOps workflow automation</h3>
+                <p class="cds-txt cds-txt--body cds-txt--secondary">Device and access provisioning for a fast-scaling 200+ person company.</p>
+                <span class="work-row__more">Read the case <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- What clients say (archetype P) -->
+    <section id="clients" class="cds-section cds-section--raised section" aria-labelledby="clients-title">
+      <div class="cds-container">
+        <header class="section-head reveal">
+          <h2 id="clients-title" class="cds-h cds-h--h1">What clients say</h2>
+        </header>
+        <div class="section-body">
+          <div class="quotes">
+            <figure class="quote reveal">
+              <blockquote class="cds-txt cds-txt--body-l">
+                <p>“Working with the Creatio Design team on our recent project was a memorable experience, especially as the project needed a lot of UX/UI involvement. What I valued most was the team’s thoroughness, speed of response and support. Creatio Design always proactively brought an expert point of view, which made me trust them as a partner. Every stage from wireframe to hand-off was coherent, on timeline and nearly free of obstacles. Thank you to the team for the dedication and for a product we are very happy with. I hope we work together again soon.”</p>
+              </blockquote>
+              <figcaption class="quote__by">
+                <span class="quote__name">Product Manager</span>
+                <span class="quote__role">AnyMind</span>
+              </figcaption>
+            </figure>
+            <figure class="quote reveal">
+              <blockquote class="cds-txt cds-txt--body-l">
+                <p>“What Gopany values about Creatio Design is the full commitment of time and the responsible way of working. An experienced and dedicated design partner, with a way of working that matched the expectations Gopany set.”</p>
+              </blockquote>
+              <figcaption class="quote__by">
+                <span class="quote__name">Minh Vương</span>
+                <span class="quote__role">Founder &amp; CEO, Gopany</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="proof-photos reveal">
+            <div class="cds-aspect cds-aspect--rounded">
+              <img src="assets/img/hoang-whiteboard.webp" width="888" height="442" alt="Hoang Tran mapping an e-commerce purchase flow on a whiteboard" loading="lazy">
+            </div>
+            <div class="cds-aspect cds-aspect--rounded">
+              <img src="assets/img/hoang-meeting.webp" width="408" height="448" alt="Hoang Tran in a working session" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages (archetype S) -->
+    <section id="packages" class="cds-section section" aria-labelledby="packages-title">
+      <div class="cds-container">
+        <header class="section-head reveal">
+          <h2 id="packages-title" class="cds-h cds-h--h1">Engagement model and packages</h2>
+        </header>
+        <div class="section-body packages">
+          <article class="cds-card card-roomy package reveal" aria-labelledby="pkg-audit">
+            <h3 id="pkg-audit" class="cds-card__title package__name">Design Audit</h3>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Context &amp; goal</h4>
+              <p class="package__text">Complex UX flows with logic gaps before development. A review to improve them or reduce the risk of rework.</p>
+            </div>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Scope &amp; output</h4>
+              <ul class="package__text package__items">
+                <li>UX &amp; system flow audit</li>
+                <li>UX audit &amp; logic gaps report</li>
+                <li>P0 to P3 prioritized backlog</li>
+              </ul>
+            </div>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Time &amp; capacity</h4>
+              <p class="package__text">One week minimum, longer with the product’s size and complexity.</p>
+            </div>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Operations &amp; exit</h4>
+              <ul class="package__text package__items">
+                <li>Two alignment sessions</li>
+                <li>Hard exit: a clean sign-off, free to stop or continue</li>
+              </ul>
+            </div>
+          </article>
+          <article class="cds-card card-roomy package reveal" aria-labelledby="pkg-scope">
+            <h3 id="pkg-scope" class="cds-card__title package__name">Scope-based</h3>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Context &amp; goal</h4>
+              <p class="package__text">Work by scope with a fixed timeline while dev waits on specs. Closes out a complex workstream completely.</p>
+            </div>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Scope &amp; output</h4>
+              <ul class="package__text package__items">
+                <li>One or more modules of your choice (flow, UI, DS)</li>
+                <li>Figma design spec</li>
+                <li>Full states, logic &amp; edge cases</li>
+              </ul>
+            </div>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Time &amp; capacity</h4>
+              <p class="package__text">Set by scope and delivery milestones, agreed on the call.</p>
+            </div>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Operations &amp; exit</h4>
+              <ul class="package__text package__items">
+                <li>Reviews at each milestone</li>
+                <li>Sign-off against the spec committed at the start</li>
+              </ul>
+            </div>
+          </article>
+          <article class="cds-card card-roomy package reveal" aria-labelledby="pkg-retainer">
+            <h3 id="pkg-retainer" class="cds-card__title package__name">Retainer</h3>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Context &amp; goal</h4>
+              <p class="package__text">Long-term product, a continuous backlog, a gap in in-depth design capability.</p>
+            </div>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Scope &amp; output</h4>
+              <ul class="package__text package__items">
+                <li>Owns UX/UI against the product backlog</li>
+                <li>Direct engineering alignment &amp; design QA</li>
+                <li>Delivery directly in your workspace</li>
+              </ul>
+            </div>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Time &amp; capacity</h4>
+              <p class="package__text">A weekly block of hours at the level you commit to (for example 15 or 25 hours).</p>
+            </div>
+            <div class="package__row">
+              <h4 class="cds-txt cds-txt--overline cds-txt--secondary package__label">Operations &amp; exit</h4>
+              <ul class="package__text package__items">
+                <li>Runs on your team’s sprint cadence</li>
+                <li>Unlimited revisions within the hours</li>
+                <li>Adjust or pause on a flexible cycle</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer" data-theme="dark" aria-labelledby="cta-title">
+    <div class="cds-container">
+      <h2 id="cta-title" class="site-footer__title">Start with a 30-minute call.</h2>
+      <!-- Cal inline embed: CEO-supplied snippet (2026-10-08), loaded by site.js when the footer comes near -->
+      <div class="site-footer__cal" id="my-cal-inline-discovery">
+        <p class="cds-txt cds-txt--body-l site-footer__fallback">Book a 30-minute session to align on scope: <a class="cta-link" href="https://cal.com/creatio-design/discovery">cal.com/creatio-design/discovery</a></p>
+      </div>
+      <div class="site-footer__bottom">
+        <div class="site-footer__brand">
+          <svg class="icon" width="28" height="28" aria-hidden="true" focusable="false"><use href="#mark-small"/></svg>
+          <span class="site-footer__name">Creatio Design</span>
+          <span class="cds-txt cds-txt--body-s cds-txt--secondary">Product design studio</span>
+        </div>
+        <div class="site-footer__col">
+          <h3 class="cds-txt cds-txt--body-s cds-txt--secondary site-footer__label">Contact</h3>
+          <a class="site-footer__link" href="mailto:hi@creatio.design">hi@creatio.design</a>
+          <a class="site-footer__link" href="tel:+84396245300">+84 396 245 300</a>
+        </div>
+        <div class="site-footer__col">
+          <h3 class="cds-txt cds-txt--body-s cds-txt--secondary site-footer__label">Follow</h3>
+          <a class="site-footer__link" href="https://www.linkedin.com/in/hoangtran-designer" rel="noopener">LinkedIn <svg class="icon site-footer__out" width="20" height="20" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+        </div>
+      </div>
+      <p class="cds-txt cds-txt--caption cds-txt--secondary site-footer__legal">Creatio Design Company Limited · Tax code 0318770321 · Founded December 2024</p>
     </div>
-  </section>
-
-  <!-- ============ WORK ============ -->
-  <section id="work">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-label">Selected work</div>
-        <h2>Work that shipped, with the numbers it produced</h2>
-        <p>Where a client is named, the record is public and verifiable.
-           Where it isn't, the constraints and outcomes are real and the identity is protected by agreement.</p>
-      </div>
-
-      <div class="work-list">
-
-        <!-- BlockTree -->
-        <div class="work">
-          <div class="work-cover">
-            <img src="assets/img/bt-brand-logo.png" alt="BlockTree brand identity" loading="lazy" onerror="this.remove()">
-            <img src="assets/img/bt-app-cover.png" alt="BlockTree field worker app" loading="lazy" onerror="this.remove()">
-            <img src="assets/img/bt-web-cover.png" alt="BlockTree website" loading="lazy" onerror="this.remove()">
-          </div>
-          <div class="work-body">
-            <div class="work-tag"><span class="verified">✓ Public record on Cardano</span> · Brand · Web · Mobile app</div>
-            <h3>BlockTree: designing trust into a blockchain reforestation platform</h3>
-            <p>Brand identity, landing page, and a field-worker app in one two-week engagement.
-               Field research in Nui Thanh district showed workers interact at two moments,
-               before and after the shift, not continuously. The app was rebuilt around that
-               observation, and the assumption it replaced was mine.</p>
-            <!-- data-slot: blocktree-imagery -->
-            <a class="work-link" href="https://projectcatalyst.io/funds/9/dapps-products-and-integrations/cardano-forest-blocktreeasia" target="_blank" rel="noopener">Verify the funded project record →</a>
-          </div>
-          <div class="work-metrics">
-            <div class="metric"><b class="tnum">$37,800</b><span>Grant fully disbursed, all 5 milestones completed</span></div>
-            <div class="metric"><b class="tnum">40</b><span>Field workers using the app daily</span></div>
-            <div class="metric"><b class="tnum">500+</b><span>Trees verified with GPS and photo, minted as NFTs</span></div>
-            <div class="metric"><b class="tnum">2</b><span>Reforestation organizations onboarded</span></div>
-          </div>
-        </div>
-
-        <!-- ITOps -->
-        <div class="work">
-          <div class="work-body">
-            <div class="work-tag">Internal tooling · Workflow automation · Anonymized under NDA</div>
-            <h3>Rebuilding ITOps provisioning for a 200-person company scaling past its processes</h3>
-            <p>One day of shadowing showed the real problem: the team was already provisioning
-               before approval, informally and without a log. The design formalized what was
-               already happening, safely: full audit trail, automatic rollback, explicit states.
-               Six months of audit-log data confirmed the strategy, 97% of requests were routine.</p>
-            <a class="work-link" href="mailto:hi@creatio.design?subject=ITOps case walkthrough">Ask for the full walkthrough →</a>
-          </div>
-          <div class="work-metrics">
-            <div class="metric"><b class="tnum">3d → &lt;1d</b><span>Provisioning time</span></div>
-            <div class="metric"><b class="tnum">95%</b><span>Requests automated end to end at 3 months</span></div>
-            <div class="metric"><b class="tnum">9 → 15</b><span>Requests handled per day, same team of five</span></div>
-            <p class="method-note">Before-state from 3 months of Jira timestamps and an email-thread audit. After-state from system logs.</p>
-          </div>
-        </div>
-
-        <!-- Design system -->
-        <div class="work">
-          <div class="work-body">
-            <div class="work-tag">B2B SaaS · Design system · Anonymized under NDA</div>
-            <h3>A shared component language across 7 product lines, without stopping delivery</h3>
-            <p>Six conflicting shades of primary blue, four body text sizes, mixed spacing grids.
-               The fix wasn't a prettier library, it was an adoption strategy: a pragmatic
-               MUI-based token layer engineering already knew, piloted on two features before
-               any mandate, measured monthly from the codebase instead of self-reporting.</p>
-            <a class="work-link" href="mailto:hi@creatio.design?subject=Design system case walkthrough">Ask for the full walkthrough →</a>
-          </div>
-          <div class="work-metrics">
-            <div class="metric"><b class="tnum">1 → 2-3</b><span>Features shipped per sprint</span></div>
-            <div class="metric"><b class="tnum">7/7</b><span>Product lines adopting the system for all new features</span></div>
-            <div class="metric"><b class="tnum">&lt;10%</b><span>Visual-inconsistency share of total bugs, from most common category</span></div>
-            <p class="method-note">Adoption measured by a monthly script over the codebase, not team self-reporting.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ AI ============ -->
-  <section id="ai">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-label">AI workflow</div>
-        <h2>AI compresses my hours. The judgment stays mine.</h2>
-        <p>I use AI daily in core design work, not as a novelty. The honest version of what that means:</p>
-      </div>
-      <div class="ai-grid">
-        <div class="ai-card">
-          <div class="n">01 · What it accelerates</div>
-          <h3>Research and domain ramp-up</h3>
-          <p>Learning a new domain used to cost me two months. With a structured research
-             pipeline it takes one to two weeks, with every claim tied to a source I can show.</p>
-        </div>
-        <div class="ai-card">
-          <div class="n">02 · What it opens</div>
-          <h3>Prototypes in code, not pictures</h3>
-          <p>Concepts go from Figma to working React prototypes your team can click,
-             test on a phone, and react to. Feedback lands on behavior, not on a static image.</p>
-        </div>
-        <div class="ai-card">
-          <div class="n">03 · What stays mine</div>
-          <h3>The diagnosis and the call</h3>
-          <p>AI produces artifacts. It doesn't survive being questioned about a decision
-             it never made. The trade-offs, the priorities, and the "no" are mine to defend.</p>
-        </div>
-      </div>
-      <div class="ai-note">
-        <b>Where I've rejected AI output, concretely:</b> on a recent market assessment,
-        the research pipeline surfaced a regulatory claim that made the recommendation easy.
-        A verification pass showed the legislation never passed. The convenient story was
-        discarded and the recommendation was rebuilt on what was actually true. That
-        verification step is part of the workflow, not an afterthought.
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section id="about">
-    <div class="wrap about">
-      <div>
-        <div class="sec-label">About</div>
-        <h2>Hoàng Trần</h2>
-        <p style="margin-top:16px;">
-          I've spent twelve years in B2B SaaS, fintech, and internal tooling, taking products
-          from ambiguous brief to shipped interface. Five of those years I led a team of six
-          designers as a design manager, which taught me the part of the job that isn't in
-          Figma: <strong>getting engineers, PMs, and founders to the same decision without
-          burning a week on it.</strong>
-        </p>
-        <p>
-          I run my own practice now, Creatio Design, a registered company in Ho Chi Minh City.
-          For teams in Singapore and Australia that means a full working day of overlap,
-          a contractor structure that takes minutes to set up instead of months, and one
-          senior person who is accountable for the work end to end.
-        </p>
-      </div>
-      <div class="side-card">
-        <h4>Working details</h4>
-        <div class="side-row"><span>Base</span><b>Ho Chi Minh City, VN</b></div>
-        <div class="side-row"><span>Timezone</span><b>UTC+7 · same-day with SG/AU</b></div>
-        <div class="side-row"><span>Entity</span><b>Creatio Design Co., Ltd</b></div>
-        <div class="side-row"><span>Engagement</span><b>Contractor, invoice-based</b></div>
-        <div class="side-row"><span>Tools</span><b>Figma · Claude · React</b></div>
-        <div class="side-row"><span>Start</span><b>Paid two-week scope</b></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <div class="wrap">
-    <div class="contact" id="contact">
-      <h2>Tell me what's overflowing.</h2>
-      <p>One email with a sentence about the product or the pipeline is enough.
-         I'll reply with whether I can help, and if I can't, I'll say so.</p>
-      <a class="btn btn-lg" href="mailto:hi@creatio.design">hi@creatio.design</a>
-      <a class="mail" href="https://www.linkedin.com/in/hoangtran-designer" target="_blank" rel="noopener">LinkedIn ↗</a>
-    </div>
-  </div>
-
-</main>
-
-<footer>
-  <div class="wrap foot">
-    <div>© 2026 CREATIO DESIGN COMPANY LIMITED · Tax code 0318770321 · Ho Chi Minh City, Vietnam</div>
-    <div><a href="mailto:hi@creatio.design">hi@creatio.design</a></div>
-  </div>
-</footer>
-
+  </footer>
 </body>
 </html>

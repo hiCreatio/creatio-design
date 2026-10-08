@@ -1,0 +1,124 @@
+/* ============================================================
+   CREATIO DESIGN SYSTEM — TYPOGRAPHY
+   Two families (Brand Foundation §08). Work Sans is the workhorse:
+   hierarchy by WEIGHT only. Oswald is the display exception — a
+   UPPERCASE ladder (poster→s), one per layout, display/heading only,
+   never body/UI. Fonts load from Google Fonts in each page head (Work Sans + Oswald, Vietnamese subset).
+   Body & Caption fixed at all breakpoints; headings step down.
+   Values reconciled to Brand Foundation type scale + deck v5 Oswald.
+   ============================================================ */
+
+
+:root {
+  /* ---- font family ---- */
+  --sys-font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --sys-font-family-display: "Oswald", "Work Sans", sans-serif;
+
+  /* ---- Oswald display ladder (Brand §08 / deck v5) ----
+     ALWAYS uppercase (consumers apply text-transform:uppercase),
+     weight 600–700, display/heading scale only, one per layout.
+     Fixed sizes (presentation/poster scale, not reflowing body). */
+  --sys-type-oswald-poster-family: var(--sys-font-family-display);
+  --sys-type-oswald-poster-size: 300px;
+  --sys-type-oswald-poster-weight: var(--ref-font-weight-700);
+  --sys-type-oswald-poster-line: 0.8;
+  --sys-type-oswald-poster-tracking: normal;
+
+  --sys-type-oswald-xl-family: var(--sys-font-family-display);
+  --sys-type-oswald-xl-size: 80px;
+  --sys-type-oswald-xl-weight: var(--ref-font-weight-700);
+  --sys-type-oswald-xl-line: 1.35;
+  --sys-type-oswald-xl-tracking: -0.05em;
+
+  --sys-type-oswald-l-family: var(--sys-font-family-display);
+  --sys-type-oswald-l-size: 64px;
+  --sys-type-oswald-l-weight: var(--ref-font-weight-700);
+  --sys-type-oswald-l-line: 1.1;
+  --sys-type-oswald-l-tracking: 0.004em;
+
+  --sys-type-oswald-m-family: var(--sys-font-family-display);
+  --sys-type-oswald-m-size: 40px;
+  --sys-type-oswald-m-weight: var(--ref-font-weight-700);
+  --sys-type-oswald-m-line: 1.2;
+  --sys-type-oswald-m-tracking: 0.004em;
+
+  --sys-type-oswald-s-family: var(--sys-font-family-display);
+  --sys-type-oswald-s-size: 28px;
+  --sys-type-oswald-s-weight: var(--ref-font-weight-600);
+  --sys-type-oswald-s-line: 1.1;
+  --sys-type-oswald-s-tracking: 0.01em;
+
+  /* ---- Work Sans scale (desktop defaults >=1024px) — Brand type scale ---- */
+  --sys-type-display-size: 64px;
+  --sys-type-display-weight: var(--ref-font-weight-300);
+  --sys-type-display-line: 1.0625;
+  --sys-type-display-tracking: -0.025em;
+
+  --sys-type-h1-size: 44px;
+  --sys-type-h1-weight: var(--ref-font-weight-600);
+  --sys-type-h1-line: 1.09;
+  --sys-type-h1-tracking: -0.022em;
+
+  --sys-type-h2-size: 32px;
+  --sys-type-h2-weight: var(--ref-font-weight-500);
+  --sys-type-h2-line: 1.25;
+  --sys-type-h2-tracking: -0.018em;
+
+  --sys-type-h3-size: 20px;
+  --sys-type-h3-weight: var(--ref-font-weight-500);
+  --sys-type-h3-line: 1.4;
+  --sys-type-h3-tracking: -0.01em;
+
+  /* Callout / Data — tabular figures */
+  --sys-type-data-size: 28px;
+  --sys-type-data-weight: var(--ref-font-weight-600);
+  --sys-type-data-line: 1.286;
+  --sys-type-data-tracking: -0.012em;
+  --sys-type-data-feature: "tnum" 1;
+
+  /* Body L / Body / Body S — three running-text sizes (fixed) */
+  --sys-type-body-l-size: 19px;
+  --sys-type-body-l-weight: var(--ref-font-weight-400);
+  --sys-type-body-l-line: 1.58;
+
+  --sys-type-body-size: 17px;
+  --sys-type-body-weight: var(--ref-font-weight-400);
+  --sys-type-body-line: 1.65;
+
+  --sys-type-body-s-size: 15px;
+  --sys-type-body-s-weight: var(--ref-font-weight-400);
+  --sys-type-body-s-line: 1.6;
+
+  --sys-type-caption-size: 13px;
+  --sys-type-caption-weight: var(--ref-font-weight-400);
+  --sys-type-caption-line: 1.54;
+  --sys-type-caption-tracking: 0.005em;
+
+  /* Overline / eyebrow — small caps label */
+  --sys-type-overline-size: 12px;
+  --sys-type-overline-weight: var(--ref-font-weight-500);
+  --sys-type-overline-line: 1.33;
+  --sys-type-overline-tracking: 0.16em;
+}
+
+/* ---- tablet 640-1023px ---- */
+@media (max-width: 1023px) {
+  :root {
+    --sys-type-display-size: 48px;
+    --sys-type-h1-size: 38px;
+    --sys-type-h2-size: 28px;
+    --sys-type-h3-size: 19px;
+    --sys-type-data-size: 26px;
+  }
+}
+
+/* ---- mobile <640px ---- */
+@media (max-width: 639px) {
+  :root {
+    --sys-type-display-size: 40px;
+    --sys-type-h1-size: 32px;
+    --sys-type-h2-size: 26px;
+    --sys-type-h3-size: 18px;
+    --sys-type-data-size: 24px;
+  }
+}

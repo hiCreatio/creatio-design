@@ -407,6 +407,29 @@ main { padding-top: var(--site-header-h); }
   .timeline__output { margin-top: 0; }
 }
 
+/* ---------- process: how we run it (CEO approval 2026-10-08) ----------
+   Closes the dark band under a hairline: stacked head, then three facts on the accent rule
+   (the same rule as the founder block in About). */
+.pipeline {
+  margin-top: var(--sys-space-64);
+  padding-top: var(--sys-space-48);
+  border-top: var(--sys-border-width-hairline) solid var(--sys-color-border-hairline);
+}
+.pipeline__facts { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sys-space-32); margin-top: var(--sys-space-40); }
+.pipeline__fact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sys-space-8);
+  padding-left: var(--sys-space-24);
+  border-left: var(--sys-border-width-strong) solid var(--sys-color-accent-border);
+}
+@media (min-width: 1024px) {
+  .pipeline { margin-top: var(--sys-space-96); padding-top: var(--sys-space-64); }
+  .pipeline__facts { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; margin-top: var(--sys-space-48); }
+  /* Title and text sit on shared rows, so the three texts start on one line even when a title wraps. */
+  .pipeline__fact { display: grid; grid-template-rows: subgrid; grid-row: span 2; row-gap: var(--sys-space-8); }
+}
+
 /* ---------- capabilities: two big uppercase marquees, after simplestudio.is (CEO direction 2026-10-08) ----------
    No visible title or row heads (they stay for screen readers). Words are large Work Sans caps,
    separated by the Creatio mark in amber. Uppercase here is a CEO-approved exception to sentence case. */

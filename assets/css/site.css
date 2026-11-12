@@ -238,9 +238,10 @@ main { padding-top: var(--site-header-h); }
 }
 .js-reveal .reveal.is-in { opacity: 1; transform: none; }
 
-/* ---------- hero: white band, centred, amber bokeh field (Figma example 147:1032) ---------- */
+/* ---------- hero: white band, centred, 3D objects on far, mid and near planes (hero-scene.js) ---------- */
 .hero {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -253,10 +254,20 @@ main { padding-top: var(--site-header-h); }
   padding-top: calc(var(--site-header-h) + var(--sys-space-64));
   padding-bottom: var(--sys-space-120);
 }
-.hero__field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
-.hero__inner { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--sys-space-32); }
+/* The scene's canvases stack by z-index inside the hero: far 0, mid 1, link lines 2, text 3, near 4. */
+.hero__scene { position: absolute; inset: 0; pointer-events: none; }
+.hero__scene canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: opacity calc(var(--sys-motion-overlay) * 4) var(--sys-ease-standard);
+}
+.hero__inner { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: var(--sys-space-32); }
 .hero__scroll {
   position: absolute;
+  z-index: 3;
   left: 50%;
   bottom: var(--sys-space-24);
   transform: translateX(-50%);

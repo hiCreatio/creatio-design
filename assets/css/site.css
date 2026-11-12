@@ -254,7 +254,7 @@ main { padding-top: var(--site-header-h); }
   padding-top: calc(var(--site-header-h) + var(--sys-space-64));
   padding-bottom: var(--sys-space-120);
 }
-/* The scene's canvases stack by z-index inside the hero: far 0, mid 1, link lines 2, text 3, near 4. */
+/* The scene's canvases stack by z-index inside the hero: far 0, mid 1, near 2, all under the text (3). */
 .hero__scene { position: absolute; inset: 0; pointer-events: none; }
 .hero__scene canvas {
   position: absolute;
